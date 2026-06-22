@@ -10,14 +10,25 @@
 
     <!-- Sidebar -->
     <aside class="sidebar">
-        <div class="logo">🏠</div>
-        <nav>
-            <ul>
-                <li>🏠</li>
-                <li>🔔</li>
-                <li>⚙</li>
-            </ul>
-        </nav>
+        <div class="sidebar-icons">
+
+            <button class="icon-btn">
+                <img src="assets/home.png" alt="Home">
+            </button>
+
+            <button class="icon-btn">
+                <img src="assets/notification.png" alt="Notificação">
+            </button>
+
+            <button class="icon-btn">
+                <img src="assets/chart.png" alt="Relatórios">
+            </button>
+
+            <button class="icon-btn">
+                <img src="assets/settings.png" alt="Configurações">
+            </button>
+
+        </div>
     </aside>
 
     <!-- Conteúdo principal -->
@@ -25,34 +36,51 @@
 
         <!-- Header -->
         <header class="header">
-            <div>
+            <div class="user-info">
                 <h2>Hello, User</h2>
                 <p>Name</p>
             </div>
-            <div class="profile">👤</div>
+
+            <div class="profile">
+                <img src="assets/profile.png" alt="Perfil">
+            </div>
         </header>
 
-        <!-- Saldo -->
+        <!-- Saldo principal -->
         <section class="balance-box">
             <h1>R$ 000.000,00</h1>
-            <button id="openModal">+</button>
+            <button id="openModal" class="add-btn">+</button>
         </section>
 
-        <!-- Gráficos -->
+        <!-- Área de gráficos -->
         <section class="charts">
 
-            <div class="card">
-                <h3>Resumo Financeiro</h3>
-                <div class="chart-placeholder">
-                    Gráfico Pizza
+            <!-- Gráfico pizza + receita/despesas -->
+            <div class="card finance-summary">
+
+                <div class="pizza-chart">
+                    <canvas id="pizzaChart"></canvas>
                 </div>
+
+                <div class="summary-values">
+
+                    <div class="income-box">
+                        <h3>Receita</h3>
+                        <p>R$ 000.000,00</p>
+                    </div>
+
+                    <div class="expense-box">
+                        <h3>Despesas</h3>
+                        <p>R$ 000.000,00</p>
+                    </div>
+
+                </div>
+
             </div>
 
-            <div class="card">
-                <h3>Evolução Mensal</h3>
-                <div class="chart-placeholder">
-                    Gráfico Barras
-                </div>
+            <!-- Gráfico mensal -->
+            <div class="card monthly-chart">
+                <canvas id="barChart"></canvas>
             </div>
 
         </section>
@@ -75,14 +103,28 @@
                 <p>R$ 000,00</p>
             </div>
 
+            <!-- Card azul limite -->
             <div class="limit-box">
-                <h4>Limite</h4>
-                <p>R$ 000,00</p>
+
+                <div class="limit-header">
+                    <span>Limite ></span>
+                    <span>Falta</span>
+                </div>
+
+                <div class="limit-values">
+                    <p>R$ 000,00</p>
+                    <p>R$ 000,00</p>
+                </div>
+
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+
             </div>
 
         </section>
 
-        <!-- Tabela -->
+        <!-- Tabela de transações -->
         <section class="transactions">
             <h2>Transações</h2>
 
@@ -99,6 +141,7 @@
                 </thead>
 
                 <tbody>
+
                     <tr>
                         <td>Mercado pão de açúcar</td>
                         <td>Mercado</td>
@@ -118,6 +161,15 @@
                     </tr>
 
                     <tr>
+                        <td>Conta de água</td>
+                        <td>Água</td>
+                        <td>Despesa</td>
+                        <td>00/00/0000</td>
+                        <td>-R$ 000,00</td>
+                        <td>✏ 🗑</td>
+                    </tr>
+
+                    <tr>
                         <td>Salário</td>
                         <td>Outros</td>
                         <td>Receita</td>
@@ -125,14 +177,16 @@
                         <td>R$ 000,00</td>
                         <td>✏ 🗑</td>
                     </tr>
+
                 </tbody>
             </table>
         </section>
 
     </main>
 
-    <!-- Modal Nova Transação -->
+    <!-- Modal -->
     <div class="modal" id="modal">
+
         <div class="modal-content">
 
             <span class="close">&times;</span>
@@ -149,7 +203,7 @@
                 </select>
 
                 <label>Nome</label>
-                <input type="text" placeholder="Ex: salário, aluguel...">
+                <input type="text" placeholder="Ex: salário, aluguel">
 
                 <label>Valor</label>
                 <input type="number" placeholder="R$ 0,00">
@@ -176,6 +230,7 @@
             </form>
 
         </div>
+
     </div>
 
     <script src="script.js"></script>
