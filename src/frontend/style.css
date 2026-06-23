@@ -50,6 +50,29 @@ td:contains("Receita") { color: #008000 !important; font-weight: bold; }
 .buttons button[type="submit"] { background: #0056b3; color: white; }
 .buttons button[type="button"] { background-color: #ff0000; color: #000;}
 
+.icon-btn i{
+    font-size: 22px;
+    color: white;
+}
+
+.icon-btn {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: transparent;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.icon-btn:hover {
+    background: #1c2a44;
+}
+
 .finance-summary {
     display: flex;
     align-items: center;
