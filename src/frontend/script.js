@@ -18,7 +18,8 @@ async function adicionarTransacao(e) {
 
     const tipo = document.getElementById("tipo").value;
     const nome = document.getElementById("nome").value;
-    const valor = parseFloat(document.getElementById("valor").value.replace(",","."));
+    const valorInput = document.getElementById("valor").value;
+    const valor = valorInput ? parseFloat(valorInput.replace(",", ".")) : 0;    
     const data = document.getElementById("data").value;
     const categoria = document.getElementById("categoria").value;
 
@@ -107,11 +108,27 @@ function atualizarResumo() {
     pizzaChart.data.datasets[0].data = [receita, despesa];
     pizzaChart.update();
 
-    const labels = transactions.map(t => t.nome);
-    const valores = transactions.map(t => t.valor);
+    const meses = [
+        "Jan", "Fev", "Mar", "Abr", "Mai", "Jun",
+        "Jul", "Ago", "Set", "Out", "Nov", "Dez"
+    ];
 
-    barChart.data.labels = labels;
-    barChart.data.datasets[0].data = valores;
+    let dadosMes = new Array(12).fill(0);
+
+    transactions.forEach(t => {
+        if (t.data) {
+            const mes = new Date(t.data).getMonth();
+
+            if (t.tipo === "Receita") {
+                dadosMes[mes] += t.valor;
+            } else {
+                dadosMes[mes] -= t.valor;
+            }
+        }
+    });
+
+    barChart.data.labels = meses;
+    barChart.data.datasets[0].data = dadosMes;
     barChart.update();
 }
 
@@ -120,7 +137,7 @@ const modal = document.getElementById("modal");
 const openBtn = document.getElementById("openModal");
 const closeBtn = document.querySelector(".close");
 
-openBtn.onclick = () => modal.style.display = "block";
+openBtn.onclick = () => modal.style.display = "flex";
 closeBtn.onclick = () => modal.style.display = "none";
 
 function fecharModal() {
@@ -128,9 +145,9 @@ function fecharModal() {
 }
 
 // EVENTO FORM
-document.querySelector("form")
-    .addEventListener("submit", adicionarTransacao);
-
+document
+  .getElementById("formTransacao")
+  .addEventListener("submit", adicionarTransacao);
 
 // GRAFICO
 function criarGraficos() {
@@ -158,6 +175,7 @@ function criarGraficos() {
         }
     });
 }
+
 
 criarGraficos();
 carregarTransacoes();

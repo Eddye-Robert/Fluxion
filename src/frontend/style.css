@@ -37,8 +37,8 @@ td:contains("Despesa") { color: #ff0000 !important; font-weight: bold; }
 td:contains("Receita") { color: #008000 !important; font-weight: bold; }
 
 /* Modal */
-.modal { display: none; position: fixed; top: 0; left: 0; inset: 0; background: rgba(0,0,0,0.6); align-items: center; justify-content: center; }
-.modal-content { background: #fff; color: #333; padding: 30px; border-radius: 15px; width: 400px; transform: translateY(-100px); transition: 0.3s;}
+.modal { display: none; position: fixed; top:0; inset: 0; background: rgba(0,0,0,0.6); align-items: center; justify-content: center; }
+.modal-content { background: #fff; color: #333; padding: 30px; border-radius: 15px; width: 100%; max-width: 370px; max-height: 90vh; overflow-y: auto; margin: auto; transform: translateY(-100px); transition: 0.3s;}
 #modal.show {opacity: 1; pointer-events: auto;}
 #modal.show .modal-content {transform: translateY(0);}
 .modal-content h2 { margin-bottom: 20px; }
@@ -49,7 +49,25 @@ td:contains("Receita") { color: #008000 !important; font-weight: bold; }
 .buttons button[type="submit"] { background: #0056b3; color: white; }
 .buttons button[type="button"] { background-color: #ff0000; color: #000;}
 
+.finance-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.summary-values {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-width: 120px;
+}
+
 .pizza-chart {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     max-width: 350px;
     margin: auto;
