@@ -3,7 +3,8 @@
 body { display: flex; height: 100vh; background-color: #050a12; color: #fff; }
 
 /* Sidebar */
-.sidebar { width: 80px; background-color: #0b1525; display: flex; flex-direction: column; align-items: center; padding: 20px 0; gap: 40px; }
+.sidebar { width: 80px; background-color: #0b1525;}
+.sidebar-icons{display: flex; flex-direction: column; align-items: center; padding: 20px 0; gap: 40px; }
 .logo { font-size: 24px; }
 .sidebar ul { list-style: none; display: flex; flex-direction: column; gap: 20px; }
 
@@ -48,6 +49,29 @@ td:contains("Receita") { color: #008000 !important; font-weight: bold; }
 .buttons button { flex: 1; padding: 12px; border: none; border-radius: 8px; cursor: pointer; }
 .buttons button[type="submit"] { background: #0056b3; color: white; }
 .buttons button[type="button"] { background-color: #ff0000; color: #000;}
+
+.icon-btn i{
+    font-size: 22px;
+    color: white;
+}
+
+.icon-btn {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: transparent;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.icon-btn:hover {
+    background: #1c2a44;
+}
 
 .finance-summary {
     display: flex;
